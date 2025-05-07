@@ -1,7 +1,7 @@
 #!/bin/bash
 
 service mariadb start
-sleep 4
+sleep 3
 
 
 mariadb -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;"
