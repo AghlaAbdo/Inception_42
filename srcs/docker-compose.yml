@@ -69,7 +69,7 @@ services:
   ftp:
     image: ftp:1.3.3.7
     container_name: ftp
-    build: ./requirements/ftp
+    build: ./requirements/bonus/ftp
     volumes:
       - wordpress:/var/www/wordpress
     networks:
@@ -80,4 +80,20 @@ services:
       - "30000-30100:30000-30100"
     env_file:
       - .env
+    restart: always
+
+  static_page:
+    image: static_page:1.3.3.7
+    container_name: static_page
+    build: ./requirements/bonus/static_page
+    ports:
+      - "5050:5050"
+    restart: always
+
+  adminer:
+    image: adminer:1.3.3.7
+    container_name: adminer
+    build: ./requirements/bonus/adminer
+    ports:
+      - "6060:6060"
     restart: always
