@@ -1,8 +1,7 @@
 FROM debian:bullseye
 
-RUN apt-get update && apt-get upgrade -y
-
-RUN apt-get install -y mariadb-server mariadb-client netcat
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y mariadb-server mariadb-client netcat
 
 COPY ./conf/mdb-conf.sh /mdb-conf.sh
 

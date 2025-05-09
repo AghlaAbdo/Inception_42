@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Age calculator app</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+
+  <div class="container">
+    <form action="" id="submit-form" onsubmit="return callMe()">
+      <div class="input-container">
+        <label for="day" class="title">Day</label>
+       
+        <input type="number" placeholder="DD" name="day" id="day" class="input-box ">
+        <p class="warning">Must be a valid day</p>
+      </div>
+      <div class="input-container">
+        <label for="month" class="title">Month</label>
+        <input type="number" placeholder="MM" name="month" id="month" class="input-box ">
+        <p class="warning">Must be a valid month</p>
+      </div>
+      <div class="input-container">
+        <label for="year" class="title">Year</label>
+        <input type="number" placeholder="YYYY" name="year" id="year" class="input-box ">
+        <p class="warning">Must be a valid year</p>
+      </div>
+      <div class="arrow"><input type="image" src="assets/images/icon-arrow.svg" id="submit-img" ></div>
+    </form>
+    <hr>
+    <div class="headers">
+      <h3><span id="yy">--</span> years</h3>
+      <h3><span id="mm">--</span> months</h3>
+      <h3><span id="dd">--</span> days</h3>
+    </div>
+  </div>
+
+</body>
+</html>
