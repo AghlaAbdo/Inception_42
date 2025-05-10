@@ -1,7 +1,7 @@
 FROM debian:bullseye
 
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y php wget
+    apt-get install -y php php-mysql wget
 
 RUN mkdir -p /var/www/adminer
 
