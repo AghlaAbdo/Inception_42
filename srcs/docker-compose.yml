@@ -3,14 +3,14 @@ volumes:
     name: mariadb
     driver: local
     driver_opts:
-      device: /home/aghla/data/mariadb
+      device: /home/aaghla/data/mariadb
       o: bind
       type: none
   wordpress:
     name: wordpress
     driver: local
     driver_opts:
-      device: /home/aghla/data/wordpress
+      device: /home/aaghla/data/wordpress
       o: bind
       type: none
 
@@ -42,7 +42,7 @@ services:
     build: ./requirements/nginx
     ports:
       - "443:443"
-      - "5151:5151"
+      # - "5151:5151"
     depends_on:
       - wordpress
     volumes:
@@ -77,7 +77,7 @@ services:
     networks:
       - main_net
     ports:
-      - "21:21"
+      - "20-21:20-21"
       - "30000-30100:30000-30100"
     env_file:
       - .env
@@ -89,8 +89,8 @@ services:
     build: ./requirements/bonus/static_page
     networks:
       - main_net
-    ports:
-      - "5050:5050"
+    # ports:
+    #   - "5050:5050"
     restart: always
 
   adminer:
@@ -99,8 +99,8 @@ services:
     build: ./requirements/bonus/adminer
     networks:
       - main_net
-    ports:
-      - "6060:6060"
+    # ports:
+    #   - "6060:6060"
     restart: always
 
   redis:

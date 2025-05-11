@@ -1,5 +1,14 @@
 #!/bin/bash
 
+REQUIRED_VARS=(DB_NAME DB_USER DB_PASS DB_ROOT_PASS)
+
+for var in "${REQUIRED_VARS[@]}"; do
+  if [ -z "${!var}" ]; then
+    echo "❌ Missing environment variable: $var"
+    exit 1
+  fi
+done
+
 service mariadb start
 sleep 3
 

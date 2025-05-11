@@ -4,38 +4,31 @@ const path = require('path');
 const url = require('url');
 
 const PORT = 5050;
-console.log("__dirname: ", __dirname);
+// console.log("__dirname: ", __dirname);
 const PUBLIC_DIR = path.join(__dirname, '../');
 
 const server = http.createServer((req, res) => {
-    // Parse the URL
     const parsedUrl = url.parse(req.url);
-    console.log("parsedUrl: ", parsedUrl);
-    // Get the pathname
+    // console.log("parsedUrl: ", parsedUrl);
     let pathname = path.join(PUBLIC_DIR, parsedUrl.pathname);
-    console.log("pathname: ", pathname);
+    // console.log("parsedUrl.pathname: ", parsedUrl.pathname);
     
-    // Check if the path exists
     fs.stat(pathname, (err, stats) => {
         if (err) {
-            // File not found
             res.statusCode = 404;
             res.end(`File ${pathname} not found!`);
             return;
         }
 
-        // If it's a directory, serve index.html
         if (stats.isDirectory()) {
             pathname = path.join(pathname, 'index.html');
         }
 
-        // Read the file
         fs.readFile(pathname, (err, data) => {
             if (err) {
                 res.statusCode = 500;
                 res.end(`Error getting the file: ${err}.`);
             } else {
-                // Based on the file extension, set the content type
                 const ext = path.parse(pathname).ext;
                 const contentType = getContentType(ext);
                 res.setHeader('Content-type', contentType || 'text/plain');

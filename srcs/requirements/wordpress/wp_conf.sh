@@ -1,5 +1,14 @@
 #!/bin/bash
 
+REQUIRED_VARS=(DB_NAME DB_USER DB_PASS DB_ROOT_PASS DOMAIN_NAME WP_BLOG_TITLE WP_ADMIN WP_ADMIN_PASS WP_ADMIN_EMAIL WP_USR_NAME WP_USR_EMAIL WP_USR_PASS WP_USR_ROLE)
+
+for var in "${REQUIRED_VARS[@]}"; do
+  if [ -z "${!var}" ]; then
+    echo "❌ Missing environment variable: $var"
+    exit 1
+  fi
+done
+
 apt-get install php-xml -y
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar
