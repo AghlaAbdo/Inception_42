@@ -13,12 +13,12 @@ RUN echo "pasv_enable=YES" >> /etc/vsftpd.conf && \
     echo "chroot_local_user=YES" >> /etc/vsftpd.conf && \
     echo "allow_writeable_chroot=YES" >> /etc/vsftpd.conf
 
-RUN useradd -m -d /var/www/wordpress -s /bin/bash aghla && \
-echo "aghla:passit" | chpasswd && \
-usermod -aG www-data aghla
+RUN mkdir -p /var/run/vsftpd/empty && \
+    chown root:root /var/run/vsftpd/empty && \
+    chmod 755 /var/run/vsftpd/empty
 
-RUN service vsftpd start
+COPY ./tools/ftp_conf.sh /ftp_conf.sh
 
-CMD ["vsftpd", "/etc/vsftpd.conf"]
+RUN chmod +x  /ftp_conf.sh
 
-# CMD ["bash"]
+CMD ["./ftp_conf.sh"]
