@@ -1,7 +1,7 @@
 
 up:
-	@mkdir -p /home/aaghla/data/wordpress
-	@mkdir -p /home/aaghla/data/mariadb
+	@mkdir -p $(HOME)/data/wordpress
+	@mkdir -p $(HOME)/data/mariadb
 	@docker compose -f ./srcs/docker-compose.yml up --build
 down:
 	@docker compose -f ./srcs/docker-compose.yml down
