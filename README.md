@@ -41,22 +41,58 @@ Beyond the core requirements, this project includes several exciting bonus servi
 
 ## Technologies Used 🛠️
 
-- Docker: Containerization platform.
-- Docker Compose: Tool for defining and running multi-container Docker applications.
-- Nginx: Web server and reverse proxy.
-- WordPress: Content Management System.
-- MariaDB: Relational Database Management System.
-- Adminer: Database management tool.
-- vsftpd: FTP Server.
-- Redis: In-memory data store.
-- C++98: For the custom IRC server implementation.
+- **Docker**: Containerization platform.
+- **Docker Compose**: Tool for defining and running multi-container Docker applications.
+- **Nginx**: Web server and reverse proxy.
+- **WordPress**: Content Management System.
+- **MariaDB**: Relational Database Management System.
+- **Adminer**: Database management tool.
+- **vsftpd**: FTP Server.
+- **Redis**: In-memory data store.
+- **C++98**: For the custom IRC server implementation.
 
 ---
 
 ## How to Use 🚀
 
-Clone the repository:
+1. **Clone the repository:**
 
-```bash
-git clone https://github.com/your-username/Inception.git
-cd Inception
+    ```bash
+    git clone https://github.com/your-username/Inception.git
+    cd Inception
+    ```
+
+2. **Build and run the containers:**
+
+   Make sure you have `docker` and `docker compose` installed, and simly run:
+
+    ```bash
+    make
+    ```
+
+3. **Access the services:**
+
+    - **Wordpress:**  `https://localhost:443`
+
+    - **Adminer:** You need to add the following line in your `/etc/hosts` file:
+        ```bash
+        127.0.0.1  adminer.aaghla.42.fr
+        ```
+        Then access it through `adminer.aaghla.42.fr`.
+
+    - **Age Calculator:** You need to add the following line as well in your `/etc/hosts` file:
+        ```bash
+        127.0.0.1  app.aaghla.42.fr
+        ```
+        Then access it through `app.aaghla.42.fr`.
+
+    - **FTP Serverv:** Connect via an FTP client to `localhost` specifing the password `FTP_PASS` in `./src/.env` file.
+    
+    - **IRC Server:** Connect via an IRC client to `localhost` port `6667`, password: `IRC_PASS` in `./src/.env`.
+
+4. **To stop and remove containers:**
+
+   Simply run:
+   ```bash
+   make fclean
+   ```
