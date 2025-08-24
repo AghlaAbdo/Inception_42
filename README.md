@@ -58,8 +58,8 @@ Beyond the core requirements, this project includes several exciting bonus servi
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/Inception.git
-    cd Inception
+    git clone https://github.com/AghlaAbdo/Inception_42
+    cd Inception_42
     ```
 
 2. **Build and run the containers:**
